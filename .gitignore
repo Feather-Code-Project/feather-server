@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+### DB 정보 ###
+src/main/resources/application-aws.yml
