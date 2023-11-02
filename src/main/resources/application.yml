@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:mysql://feather-code.cnmgd1eiu1rn.ap-northeast-2.rds.amazonaws.com:3306/feather_code?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: feather_admin
+    password: feather!
