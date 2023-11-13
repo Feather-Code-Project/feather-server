@@ -6,7 +6,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Entity
+@Entity(name="user_like")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserLike {
@@ -21,6 +21,6 @@ public class UserLike {
     private Long toUserId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "from_user_id")
+    @JoinColumn(name = "from_user_id")
     private User user;
 }

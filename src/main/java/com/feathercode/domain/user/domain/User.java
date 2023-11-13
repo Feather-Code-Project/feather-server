@@ -1,11 +1,11 @@
 package com.feathercode.domain.user.domain;
 
-import com.feathercode.domain.user.model.Gender;
+import com.feathercode.domain.model.Gender;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-@Entity
+@Entity(name="user")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
