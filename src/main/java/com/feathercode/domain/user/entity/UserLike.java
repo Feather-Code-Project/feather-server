@@ -1,4 +1,4 @@
-package com.feathercode.domain.user.domain;
+package com.feathercode.domain.user.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

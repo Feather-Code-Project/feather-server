@@ -1,4 +1,4 @@
-package com.feathercode.domain.user.domain;
+package com.feathercode.domain.user.entity;
 
 import com.feathercode.domain.model.Gender;
 import jakarta.persistence.*;
@@ -38,4 +38,19 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @Builder
+    public User(Long id, String username, String nickname, String email, String contents, String notionLink, String githubLink, String userImage, int likesCnt, int recommendationsCnt, Gender gender) {
+        this.id = id;
+        this.username = username;
+        this.nickname = nickname;
+        this.email = email;
+        this.contents = contents;
+        this.notionLink = notionLink;
+        this.githubLink = githubLink;
+        this.userImage = userImage;
+        this.likesCnt = likesCnt;
+        this.recommendationsCnt = recommendationsCnt;
+        this.gender = gender;
+    }
 }
