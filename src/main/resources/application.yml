@@ -1,7 +1,17 @@
 spring:
   profiles:
     include: aws
-
+  datasource:
+    url: jdbc:mysql://feather-code.cnmgd1eiu1rn.ap-northeast-2.rds.amazonaws.com:3306/feather_code?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: feather_admin
+    password: feather!
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
 springdoc:
   default-consumes-media-type: application/json;charset=UTF-8
   default-produces-media-type: application/json;charset=UTF-8

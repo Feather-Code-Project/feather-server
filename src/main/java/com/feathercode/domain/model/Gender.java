@@ -1,4 +1,4 @@
-package com.feathercode.domain.user.model;
+package com.feathercode.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
