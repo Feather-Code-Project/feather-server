@@ -1,4 +1,4 @@
-package com.feathercode.domain.user.domain;
+package com.feathercode.domain.user.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -6,13 +6,13 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Entity(name="user_recommendation")
+@Entity(name="user_like")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class UserRecommendation {
+public class UserLike {
 
     @Id
-    @Column(name = "user_recommendation_id")
+    @Column(name = "user_like_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
