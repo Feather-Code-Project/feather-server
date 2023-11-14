@@ -1,6 +1,6 @@
 package com.feathercode.domain.codereview.entity;
 
-import com.feathercode.domain.user.domain.User;
+import com.feathercode.domain.user.entity.User;
 import jakarta.persistence.*;
 
 @Entity
