@@ -13,8 +13,8 @@ public class Tag {
     private String tagName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "comment_id")
-    private Comment comment;
+    @JoinColumn(name = "reply_id")
+    private Reply reply;
 
 
 

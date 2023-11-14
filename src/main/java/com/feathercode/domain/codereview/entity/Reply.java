@@ -5,19 +5,19 @@ import com.feathercode.domain.user.domain.User;
 import jakarta.persistence.*;
 
 @Entity
-public class CommentRecommendation extends BaseTimeEntity {
+public class Reply extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comment_recommendation_id")
+    @Column(name = "reply_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "comment_id")
-    private Comment comment;
+    private String title;
+    private String code;
+    private String description;
+    private int recommendationsCnt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
 }
