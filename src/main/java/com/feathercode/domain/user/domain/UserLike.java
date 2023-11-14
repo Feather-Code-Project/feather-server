@@ -16,11 +16,11 @@ public class UserLike {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Column(name = "to_user_id")
-    private Long toUserId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "to_user")
+    private User toUser;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "from_user_id")
-    private User user;
+    @JoinColumn(name = "from_user")
+    private User fromUser;
 }
