@@ -1,5 +1,7 @@
 package com.feathercode.domain.user.entity;
 
+
+import com.feathercode.domain.common.entity.BaseTimeEntity;
 import com.feathercode.domain.model.Gender;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -8,7 +10,7 @@ import lombok.*;
 @Entity(name="user")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class User {
+public class User extends BaseTimeEntity {
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,8 +42,7 @@ public class User {
     private Gender gender;
 
     @Builder
-    public User(Long id, String username, String nickname, String email, String contents, String notionLink, String githubLink, String userImage, int likesCnt, int recommendationsCnt, Gender gender) {
-        this.id = id;
+    public User(String username, String nickname, String email, String contents, String notionLink, String githubLink, String userImage, int likesCnt, int recommendationsCnt, Gender gender) {
         this.username = username;
         this.nickname = nickname;
         this.email = email;
@@ -52,5 +53,17 @@ public class User {
         this.likesCnt = likesCnt;
         this.recommendationsCnt = recommendationsCnt;
         this.gender = gender;
+    }
+
+    public void updateContents(String contents){
+        this.contents=contents;
+    }
+
+    public void updateNotionLink(String notionLink){
+        this.notionLink=notionLink;
+    }
+
+    public void updateGithubLink(String githubLink){
+        this.githubLink=githubLink;
     }
 }
