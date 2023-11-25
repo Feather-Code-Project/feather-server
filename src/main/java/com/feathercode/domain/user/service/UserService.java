@@ -1,5 +1,6 @@
 package com.feathercode.domain.user.service;
 
+import com.feathercode.domain.model.Gender;
 import com.feathercode.domain.user.entity.User;
 import com.feathercode.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,12 +16,12 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    /**
-     * 이건 OAUTH하고서 아마 수정 있을듯
-     */
+    @Transactional
+    public User join(Long userId, String nickname, String contents, String notionLink, String githubLink, Gender gender) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new NotFoundException(userId + "가 없습니다."));
+        user.join(nickname, contents, notionLink, githubLink, gender);
 
-    public User save(User user) {
-        return userRepository.save(user);
+        return user;
     }
 
     public void delete(User user) {
@@ -28,10 +29,10 @@ public class UserService {
     }
 
     public User findUserById(Long userId) {
-        return userRepository.findById(userId).orElseThrow(() ->new NotFoundException(userId+"가 없습니다"));
+        return userRepository.findById(userId).orElseThrow(() -> new NotFoundException(userId + "가 없습니다"));
     }
 
-    public List<User> findAll(){
+    public List<User> findAll() {
         return userRepository.findAll();
     }
 
@@ -43,12 +44,12 @@ public class UserService {
         return userRepository.findByUsername(username);
     }
 
-    public List<User> getTopReviewers(){
+    public List<User> getTopReviewers() {
         return userRepository.getTopReviewers();
     }
 
     @Transactional
-    public User updateNotionLink(Long userId,String notionLink){
+    public User updateNotionLink(Long userId, String notionLink) {
         User user = userRepository.findById(userId).orElseThrow(() -> new NotFoundException(userId + "가 없습니다."));
         user.updateNotionLink(notionLink);
 
@@ -56,7 +57,7 @@ public class UserService {
     }
 
     @Transactional
-    public User updateGithubLink(Long userId,String githubLink){
+    public User updateGithubLink(Long userId, String githubLink) {
         User user = userRepository.findById(userId).orElseThrow(() -> new NotFoundException(userId + "가 없습니다."));
         user.updateGithubLink(githubLink);
 
@@ -64,7 +65,7 @@ public class UserService {
     }
 
     @Transactional
-    public User updateContents(Long userId,String contents){
+    public User updateContents(Long userId, String contents) {
         User user = userRepository.findById(userId).orElseThrow(() -> new NotFoundException(userId + "가 없습니다."));
         user.updateContents(contents);
 
