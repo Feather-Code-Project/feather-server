@@ -1,8 +1,10 @@
 package com.feathercode.domain.user.controller;
 
+import com.feathercode.domain.user.controller.dto.JoinForm;
 import com.feathercode.domain.user.controller.dto.UserDto;
 import com.feathercode.domain.user.entity.User;
 import com.feathercode.domain.user.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +14,17 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("user")
+@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;
+
+    @PatchMapping("/join/{userId}")
+    public ResponseEntity<?> updateUser(@PathVariable Long userId, @Valid @RequestBody JoinForm joinForm){
+        User user = userService.join(userId, joinForm.getNickname(), joinForm.getContents(), joinForm.getNotionLink(), joinForm.getGithubLink(), joinForm.getGender());
+
+        return ResponseEntity.ok(user);
+    }
 
     @DeleteMapping("/{userId}")
     public ResponseEntity<?> deleteUser(@PathVariable Long userId) {

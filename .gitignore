@@ -39,3 +39,4 @@ out/
 
 ### DB 정보 ###
 src/main/resources/application-aws.yml
+src/main/resources/application-oauth.yml
