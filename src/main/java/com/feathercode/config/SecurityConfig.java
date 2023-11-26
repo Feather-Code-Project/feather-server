@@ -1,7 +1,5 @@
 package com.feathercode.config;
 
-import com.feathercode.domain.user.model.OAuthLoginFailureHandler;
-import com.feathercode.domain.user.model.OAuthLoginSuccessHandler;
 import com.feathercode.domain.user.service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -15,8 +13,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
     private final CustomOAuth2UserService userService;
-    private final OAuthLoginSuccessHandler oAuthLoginSuccessHandler;
-    private final OAuthLoginFailureHandler oAuthLoginFailureHandler;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {

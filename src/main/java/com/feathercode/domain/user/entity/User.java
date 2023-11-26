@@ -2,11 +2,11 @@ package com.feathercode.domain.user.entity;
 
 import com.feathercode.domain.common.entity.BaseTimeEntity;
 import com.feathercode.domain.model.Gender;
+import com.feathercode.domain.model.OauthProvider;
 import com.feathercode.domain.model.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-
 
 @Entity(name = "user")
 @Getter
@@ -24,7 +24,6 @@ public class User extends BaseTimeEntity {
     @Column(length = 12)
     private String nickname;
 
-    @Column(unique = true)
     @NotNull
     private String email;
 
@@ -45,8 +44,12 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false)
     private Role role;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "oauth_provider", nullable = false)
+    private OauthProvider oauthProvider;
+
     @Builder
-    public User(String username, String nickname, String email, String contents, String notionLink, String githubLink, String userImage, int likesCnt, int recommendationsCnt, Gender gender, Role role) {
+    public User(String username, String nickname, String email, String contents, String notionLink, String githubLink, String userImage, int likesCnt, int recommendationsCnt, Gender gender, Role role, OauthProvider oAuthProvider) {
         this.username = username;
         this.nickname = nickname;
         this.email = email;
@@ -58,15 +61,7 @@ public class User extends BaseTimeEntity {
         this.recommendationsCnt = recommendationsCnt;
         this.gender = gender;
         this.role = role;
-    }
-
-    public User update(String name) {
-        this.username = name;
-        return this;
-    }
-
-    public String getRoleKey() {
-        return this.role.getKey();
+        this.oauthProvider=oAuthProvider;
     }
 
     public void join(String nickname, String contents, String notionLink, String githubLink, Gender gender) {
