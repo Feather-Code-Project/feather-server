@@ -34,7 +34,6 @@ public abstract class BaseTimeEntity {
 
     private static String getCustomFormatLocalDateTime() {
         String customLocalDateTimeFormat = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-//        LocalDateTime parsedCreateDate = LocalDateTime.parse(customLocalDateTimeFormat, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
         return customLocalDateTimeFormat;
     }
 }
