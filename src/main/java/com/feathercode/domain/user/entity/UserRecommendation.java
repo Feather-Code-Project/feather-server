@@ -1,15 +1,16 @@
 package com.feathercode.domain.user.entity;
 
+import com.feathercode.domain.common.entity.BaseTimeEntity;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity(name="user_recommendation")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class UserRecommendation {
+public class UserRecommendation extends BaseTimeEntity {
 
     @Id
     @Column(name = "user_recommendation_id")
@@ -23,4 +24,10 @@ public class UserRecommendation {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "from_user")
     private User fromUser;
+
+    @Builder
+    public UserRecommendation(User toUser,User fromUser){
+        this.toUser=toUser;
+        this.fromUser=fromUser;
+    }
 }
