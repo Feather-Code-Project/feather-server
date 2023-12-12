@@ -1,6 +1,6 @@
 spring:
   profiles:
-    include: aws,oauth
+    include: aws,oauth, redis
   jpa:
     hibernate: # hibernate 사용 설정
       # 애플리케이션 실행 시점에 테이블을 다 지우고, 내가 가진 entity 정보를 보고 다시 테이블 자동 생성
@@ -16,6 +16,8 @@ spring:
   jackson: # BaseTimeEntity 날짜 형식 변경
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: Asia/Seoul
+  jwt:
+    secret: UDVaY0VRREoyaEl2d2JlWXFFN2haOWF3ekRxbFBzTnpscEFFaE5mdDBSZw==
 
 springdoc:
   default-consumes-media-type: application/json;charset=UTF-8
@@ -25,3 +27,4 @@ springdoc:
     disable-swagger-default-url: true
     display-request-duration: true
     operations-sorter: alpha
+

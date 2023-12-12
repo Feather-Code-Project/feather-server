@@ -1,0 +1,8 @@
+version : "3"
+services :
+  redis:
+    image: redis:latest # pull할 이미지
+    container_name: redis # 이미지 실행 시 생성되는 컨테이너 이름
+    hostname: redis
+    ports:
+      - "6379:6379"
