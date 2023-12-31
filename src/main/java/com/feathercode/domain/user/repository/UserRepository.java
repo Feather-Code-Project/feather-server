@@ -8,6 +8,8 @@ public interface UserRepository extends JpaRepository<User,Long>,CustomUserRepos
     User findByUsername(String username);
     User findByNickname(String nickname);
 
+    User findByEmail(String email);
+
     User findByEmailAndOauthProvider(String email, OauthProvider oAuthProvider);
     boolean existsByEmailAndOauthProvider(String email, OauthProvider oAuthProvider);
 }
