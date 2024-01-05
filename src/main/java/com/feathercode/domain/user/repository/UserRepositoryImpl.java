@@ -60,7 +60,7 @@ public class UserRepositoryImpl implements CustomUserRepository{
         List<Tuple> result = jpaQueryFactory
                 .select(userRecommendation.toUser, userRecommendation.toUser.recommendationsCnt.sum())
                 .from(userRecommendation)
-                .where(userRecommendation.createdAt.after(date))
+//                .where(userRecommendation.createdAt.after(date))
                 .groupBy(userRecommendation.toUser)
                 .orderBy(userRecommendation.toUser.recommendationsCnt.sum().desc())
                 .limit(5)

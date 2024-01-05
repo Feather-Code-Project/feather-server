@@ -1,8 +1,8 @@
 package com.feathercode.domain.user.entity;
 
-import com.feathercode.domain.common.entity.BaseTimeEntity;
+import com.feathercode.util.BaseTimeEntity;
 import com.feathercode.domain.model.Gender;
-import com.feathercode.domain.model.OauthProvider;
+import com.feathercode.domain.model.ProviderType;
 import com.feathercode.domain.model.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -23,6 +23,8 @@ public class User extends BaseTimeEntity {
 
     @Column(length = 12)
     private String nickname;
+
+    private String password;
 
     @NotNull
     private String email;
@@ -46,10 +48,10 @@ public class User extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "oauth_provider", nullable = false)
-    private OauthProvider oauthProvider;
+    private ProviderType providerType;
 
     @Builder
-    public User(String username, String nickname, String email, String contents, String notionLink, String githubLink, String userImage, int likesCnt, int recommendationsCnt, Gender gender, Role role, OauthProvider oAuthProvider) {
+    public User(String username, String nickname, String email, String contents, String notionLink, String githubLink, String userImage, int likesCnt, int recommendationsCnt, Gender gender, Role role, ProviderType providerType) {
         this.username = username;
         this.nickname = nickname;
         this.email = email;
@@ -61,7 +63,7 @@ public class User extends BaseTimeEntity {
         this.recommendationsCnt = recommendationsCnt;
         this.gender = gender;
         this.role = role;
-        this.oauthProvider=oAuthProvider;
+        this.providerType = providerType;
     }
 
     public void join(String nickname, String contents, String notionLink, String githubLink, Gender gender) {
@@ -82,5 +84,8 @@ public class User extends BaseTimeEntity {
 
     public void updateGithubLink(String githubLink) {
         this.githubLink = githubLink;
+    }
+    public void updateNickname(String nickname) {
+        this.nickname = nickname;
     }
 }
