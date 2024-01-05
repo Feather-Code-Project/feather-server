@@ -1,6 +1,6 @@
 package com.feathercode.domain.user.entity;
 
-import com.feathercode.domain.common.entity.BaseTimeEntity;
+import com.feathercode.util.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;

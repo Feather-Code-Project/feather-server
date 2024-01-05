@@ -1,6 +1,6 @@
 package com.feathercode.domain.mentoring.entity;
 
-import com.feathercode.domain.common.entity.BaseTimeEntity;
+import com.feathercode.util.BaseTimeEntity;
 import com.feathercode.domain.user.entity.User;
 import jakarta.persistence.*;
 
