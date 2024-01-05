@@ -1,10 +1,9 @@
 package com.feathercode.domain.user.controller;
 
-import com.feathercode.domain.user.controller.dto.JoinForm;
 import com.feathercode.domain.user.controller.dto.UserDto;
 import com.feathercode.domain.user.entity.User;
 import com.feathercode.domain.user.service.UserService;
-import jakarta.validation.Valid;
+import com.feathercode.jwt.TokenInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +18,12 @@ public class UserController {
 
     private final UserService userService;
 
-    @PatchMapping("/join/{userId}")
-    public ResponseEntity<?> updateUser(@PathVariable Long userId, @Valid @RequestBody JoinForm joinForm){
-        User user = userService.join(userId, joinForm.getNickname(), joinForm.getContents(), joinForm.getNotionLink(), joinForm.getGithubLink(), joinForm.getGender());
-
-        return ResponseEntity.ok(user);
-    }
+//    @PatchMapping("/join/{userId}")
+//    public ResponseEntity<?> updateUser(@PathVariable Long userId, @Valid @RequestBody JoinForm joinForm){
+//        User user = userService.join(userId, joinForm.getNickname(), joinForm.getContents(), joinForm.getNotionLink(), joinForm.getGithubLink(), joinForm.getGender());
+//
+//        return ResponseEntity.ok(user);
+//    }
 
     @DeleteMapping("/{userId}")
     public ResponseEntity<?> deleteUser(@PathVariable Long userId) {
@@ -39,14 +38,6 @@ public class UserController {
         UserDto userDto = new UserDto(user);
 
         return ResponseEntity.ok(userDto);
-    }
-
-    @GetMapping("/findAll")
-    public ResponseEntity<?> getUserAll() {
-        List<User> userList = userService.findAll();
-        List<UserDto> dtoList = userList.stream().map(UserDto::new).collect(Collectors.toList());
-
-        return ResponseEntity.ok(dtoList);
     }
 
     @GetMapping("/findByNickname")
@@ -95,5 +86,10 @@ public class UserController {
         UserDto userDto = new UserDto(user);
 
         return ResponseEntity.ok(userDto);
+    }
+
+    @PostMapping("/reissue/test")
+    public ResponseEntity reissue(@RequestBody TokenInfo reissue) {
+        return userService.reissue(reissue);
     }
 }

@@ -1,21 +1,23 @@
-package com.feathercode.domain.codereview.entity;
+package com.feathercode.domain.mentoring.entity;
 
 import com.feathercode.util.BaseTimeEntity;
 import com.feathercode.domain.user.entity.User;
 import jakarta.persistence.*;
 
 @Entity
-public class Reply extends BaseTimeEntity {
-
+public class mentoring extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "reply_id")
+    @Column(name = "tag_id")
     private Long id;
 
     private String title;
-    private String code;
     private String description;
-    private int recommendationsCnt;
+    private String duty;
+    private String career;
+    private int price;
+    private String contact;
+    private String introductionLink;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
