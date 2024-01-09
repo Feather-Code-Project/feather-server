@@ -34,17 +34,17 @@ public class MentoringController {
         return mentoringService.findAll();
     }
 
-    @PatchMapping("/{mentoringId}/{email}/x/edit")
+    @PatchMapping("/{mentoringId}/{email}/title-edit")
     public ResponseEntity<?> updateTitle(@PathVariable Long mentoringId,@PathVariable String email, @RequestParam String title){
         return mentoringService.updateTitle(mentoringId,title);
     }
 
-    @PatchMapping("/{mentoringId}/{email}/y/edit")
+    @PatchMapping("/{mentoringId}/{email}/description-edit")
     public ResponseEntity<?> updateDescription(@PathVariable Long mentoringId,@PathVariable String email, @RequestParam String description){
         return mentoringService.updateDescription(mentoringId,description);
     }
 
-    @PatchMapping("/{mentoringId}/{email}/z/edit")
+    @PatchMapping("/{mentoringId}/{email}/price-edit")
     public ResponseEntity<?> updateDescription(@PathVariable Long mentoringId,@PathVariable String email, @RequestParam int price){
         return mentoringService.updatePrice(mentoringId,price);
     }
