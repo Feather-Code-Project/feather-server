@@ -25,7 +25,7 @@ public class MentoringService {
 
     public ResponseEntity<?> save(MentoringForm mentoringform, String email) {
 
-        User user = userRepository.findByEmail(email);
+        User user = userRepository.findUserByEmail(email);
 
         Mentoring mentoring = Mentoring.builder()
                 .title(mentoringform.getTitle())
